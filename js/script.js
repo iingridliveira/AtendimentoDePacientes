@@ -1,9 +1,11 @@
+
+import { displayPatienTriage } from "./trige.js";
 const namePatiente = document.getElementById("patient-name");
 const nameReson = document.getElementById("patient-reason");
 
 
 
-let patients = [];
+export let patients = [];
 
 window.onload = function () {
   const savedPatients = localStorage.getItem("patients");
@@ -43,29 +45,9 @@ displayPatients();
 function displayPatients() {
   // You can implement the logic to display patients here
   console.log("Displaying patients:", patients);
-  displayPatientstriagem(); // Atualiza a lista de triagem
+  displayPatienTriage(); // Atualiza a lista de triagem
 }
 
-function displayPatientstriagem() {
-  const triagemList = document.getElementById("triagem-list");
-  const noPatientsMsg = document.getElementById("no-patients-msg");
-  if (!triagemList || !noPatientsMsg) return; // Evita erro se não existir
 
-  triagemList.innerHTML = "";
-
-  if (patients.length === 0) {
-    noPatientsMsg.style.display = "block";
-    return;
-  }
-
-  noPatientsMsg.style.display = "none";
-
-  patients.forEach((patient) => {
-    const li = document.createElement("li");
-    li.className = "list-group-item";
-    li.textContent = `${patient.name} - Motivo: ${patient.reason}`;
-    triagemList.appendChild(li);
-  });
-}
 
 console.log(patients);
