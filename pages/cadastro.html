@@ -14,35 +14,44 @@
 
 <body>
 
-   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-               
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto"> <!-- ms-auto para alinhamento à direita -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="./home.html">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">CADASTRO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./areamedica.html">ÁREA MÉDICA</a>
-                    </li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto"> <!-- ms-auto para alinhamento à direita -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="./home.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CADASTRO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./areamedica.html">ÁREA MÉDICA</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     </header>
+    <div class="table-responsive">
+    
+        <div class="tab-pane fade tab-content-area" id="triagem" role="tabpanel" aria-labelledby="triagem-tab">
+            <h4 class="mb-3">Pacientes em Triagem</h4>
+            <ul id="triagem-list" class="list-group"></ul>
+            <p id="no-patients-msg">Nenhum paciente em triagem no momento.</p>
+        </div>
+    
+    </div>
     <div class="container mt-4">
         <h2 class="mb-4">Área de pacientes</h2>
-    
+
         <!-- Navegação de Abas (Tabs) -->
         <ul class="nav nav-tabs mb-3" id="medicalAreaTabs" role="tablist">
             <li class="nav-item" role="presentation">
@@ -55,17 +64,17 @@
                     role="tab" aria-controls="triagem" aria-selected="false">Retire sua ficha</button>
             </li>
         </ul>
-    
-        
+
+
         <div class="tab-content" id="medicalAreaTabsContent">
-         
+
             <div class="tab-pane fade show active tab-content-area" id="em-atendimento" role="tabpanel"
                 aria-labelledby="em-atendimento-tab">
                 <div id="screen-cadastro" class="screen container mt-4">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                             
+
                                 <div class="card-body">
                                     <form id="patient-form">
                                         <div class="mb-3">
@@ -74,7 +83,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="patient-reason" class="form-label">Motivo da Visita</label>
-                                            <textarea class="form-control" id="patient-reason" rows="3" required></textarea>
+                                            <textarea class="form-control" id="patient-reason" rows="3"
+                                                required></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-success" onclick="addPatient(event)">
                                             <i class="bi bi-check-circle"></i> Registrar Paciente
@@ -83,35 +93,34 @@
                                 </div>
                             </div>
                         </div>
-                
-                    </div>      </div>
-                
+
+                    </div>
                 </div>
-    
-                <!-- Tabela ou Lista de Pacientes -->
-                <div class="table-responsive">
-               
-                </div>
-              
+
             </div>
-    
-            <!-- Aba 'ficha' -->
-            <div class="tab-pane fade tab-content-area" id="triagem" role="tabpanel" aria-labelledby="triagem-tab">
-                <h4 class="mb-3">Retire sua ficha</h4>
-               
-               
-            </div>
+
+            <!-- Tabela ou Lista de Pacientes -->
+         
+
+        </div>
+
+        <!-- Aba 'ficha' -->
+        <div class="tab-pane fade tab-content-area" id="triagem" role="tabpanel" aria-labelledby="triagem-tab">
+            <h4 class="mb-3">Retire sua ficha</h4>
+
+
         </div>
     </div>
-    
+    </div>
 
-  
+
+
 
     <!-- Bootstrap JS Bundle (Popper incluído) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-  
+
     <script src="../js/script.js"></script>
 
 </body>
