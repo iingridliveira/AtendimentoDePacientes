@@ -1,5 +1,6 @@
 import { displayPatienTriage } from "./trige.js";
 import { renderOrderedPatients } from "./tvorder.js";
+import { renderPatientsMedical } from "./medicalArea.js";
 
 const namePatiente = document.getElementById("patient-name");
 const nameReson = document.getElementById("patient-reason");
@@ -43,3 +44,4 @@ function displayPatients() {
 }
 
 renderOrderedPatients
+renderPatientsMedical; // Renderiza a lista de pacientes na área médica
