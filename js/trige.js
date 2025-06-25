@@ -14,7 +14,7 @@ function displayPatienTriage() {
 
   noPatientsMsg.style.display = "none";
 
-  patients.forEach((patient, index) => {
+  patients .filter((patient) => patient.level === 0).forEach((patient, index) => {
     const li = document.createElement("li");
     li.className =
       "list-group-item d-flex justify-content-between align-items-center";
@@ -73,5 +73,6 @@ function getTriagedPatients() {
   const patients = savedPatients ? JSON.parse(savedPatients) : [];
   return [...patients].sort((a, b) => b.level - a.level);
 }
+
 
 export { displayPatienTriage, getTriagedPatients}; 

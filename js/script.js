@@ -44,4 +44,6 @@ function displayPatients() {
 }
 
 renderOrderedPatients
-renderPatientsMedical; // Renderiza a lista de pacientes na área médica
+document.getElementById("em-atendimento-tab")?.addEventListener("click", () => {
+  renderPatientsMedical();
+});
