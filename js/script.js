@@ -1,4 +1,5 @@
 import { displayPatienTriage } from "./trige.js";
+import { renderOrderedPatients } from "./tvorder.js";
 
 const namePatiente = document.getElementById("patient-name");
 const nameReson = document.getElementById("patient-reason");
@@ -41,4 +42,4 @@ function displayPatients() {
   displayPatienTriage(); // Atualiza a lista de triagem
 }
 
-console.log(patients);
+renderOrderedPatients

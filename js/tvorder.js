@@ -28,3 +28,4 @@ function renderOrderedPatients() {
 
 document.addEventListener("DOMContentLoaded", renderOrderedPatients);
 
+export { renderOrderedPatients };
