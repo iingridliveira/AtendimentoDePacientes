@@ -5,7 +5,7 @@ function displayPatienTriage() {
   const noPatientsMsg = document.getElementById("no-patients-msg");
   if (!triagemList || !noPatientsMsg) return; // Evita erro se não existir
 
-  triagemList.innerHTML = "";
+  triagemList.innerHTML = "Nenhum paciente para triagem."; // Limpa a lista antes de exibir
 
   if (patients.length === 0) {
     noPatientsMsg.style.display = "block";

@@ -25,7 +25,8 @@ function addPatient(event) {
     id: patients.length + 1,
     name: name,
     reason: reason,
-    level: 0, // Nível de triagem padrão
+    level: 0,
+    status:0, // Nível de triagem padrão
   };
 
   patients.push(patient);
