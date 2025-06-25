@@ -17,7 +17,7 @@ function displayPatienTriage() {
   patients.forEach((patient) => {
     const li = document.createElement("li");
     li.className = "list-group-item";
-    li.textContent = `${patient.name} - Motivo: ${patient.reason}`;
+    li.textContent = `${patient.name} - Motivo: ${patient.reason} - Nível de triagem: ${patient.level}`;
     triagemList.appendChild(li);
   });
 }

@@ -1,10 +1,9 @@
-
 import { displayPatienTriage } from "./trige.js";
+
 const namePatiente = document.getElementById("patient-name");
 const nameReson = document.getElementById("patient-reason");
 
-
-
+window.addPatient = addPatient;
 export let patients = [];
 
 window.onload = function () {
@@ -16,30 +15,23 @@ window.onload = function () {
 };
 
 function addPatient(event) {
-    event.preventDefault();
-    const name = namePatiente.value.trim();
-    const reason = nameReson.value.trim();
+  event.preventDefault();
+  const name = namePatiente.value.trim();
+  const reason = nameReson.value.trim();
 
- 
+  const patient = {
+    id: patients.length + 1,
+    name: name,
+    reason: reason,
+    level: 0, // Nível de triagem padrão
+  };
 
-    const patient = {
-        id: patients.length + 1,
-        name: name,
-        reason: reason
-    };
+  patients.push(patient);
+  localStorage.setItem("patients", JSON.stringify(patients)); // Salva no localStorage
+  displayPatients();
 
-    patients.push(patient);
-    displayPatients();
-    namePatiente.value = "";
-    nameReson.value = "";
-
-    patients.push(patient);
-localStorage.setItem("patients", JSON.stringify(patients)); // Salva no localStorage
-displayPatients();
-
-    console.log(patients);
+  console.log(patients);
 }
-
 
 // Dummy implementation for displayPatients to prevent errors
 function displayPatients() {
@@ -47,7 +39,5 @@ function displayPatients() {
   console.log("Displaying patients:", patients);
   displayPatienTriage(); // Atualiza a lista de triagem
 }
-
-
 
 console.log(patients);
