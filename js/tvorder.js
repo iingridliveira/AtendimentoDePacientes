@@ -21,7 +21,7 @@ function renderOrderedPatients() {
    
     const li = document.createElement("li");
     li.className = "list-group-item";
-    li.textContent = `${patient.name} - Motivo: ${patient.reason} - Nível: `;
+    li.textContent = `${patient.name} - Motivo: ${patient.reason} estado ${patient.status}- Nível: `;
     li.appendChild(levelDot(patient));
     ul.appendChild(li);
 

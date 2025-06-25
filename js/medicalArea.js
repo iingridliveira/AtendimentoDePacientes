@@ -51,7 +51,7 @@ function renderPatientsMedical() {
     const tdActions = document.createElement("td");
     const buttonRemove = document.createElement("button");
     buttonRemove.className = "btn btn-danger btn-sm";
-    buttonRemove.textContent = "Atender";
+    buttonRemove.textContent = "Parar atendimento";
     buttonRemove.onclick = () => {
       const index = triagedPatients.indexOf(patient);
       if (index > -1) {
@@ -61,6 +61,21 @@ function renderPatientsMedical() {
       }
     };
     tdActions.appendChild(buttonRemove);
+    const buttonAttend = document.createElement("button");
+    if (patient.status === 1) {
+      buttonAttend.className = "btn btn-warning btn-sm";
+      buttonAttend.textContent = "em atendimento";
+      buttonAttend.disabled = true;
+    } else {
+      buttonAttend.className = "btn btn-danger btn-sm";
+      buttonAttend.textContent = "Atender";
+      buttonAttend.onclick = () => {
+        patient.status = 1;
+        localStorage.setItem("patients", JSON.stringify(triagedPatients));
+        renderPatientsMedical();
+      };
+    }
+    tdActions.appendChild(buttonAttend);
     tr.appendChild(tdActions);
 
     tbody.appendChild(tr);

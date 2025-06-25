@@ -5,7 +5,7 @@ function displayPatienTriage() {
   const noPatientsMsg = document.getElementById("no-patients-msg");
   if (!triagemList || !noPatientsMsg) return; // Evita erro se não existir
 
-  triagemList.innerHTML = "Nenhum paciente para triagem."; // Limpa a lista antes de exibir
+  triagemList.innerHTML = ""; // Limpa a lista antes de exibir
 
   if (patients.length === 0) {
     noPatientsMsg.style.display = "block";
@@ -14,7 +14,7 @@ function displayPatienTriage() {
 
   noPatientsMsg.style.display = "none";
 
-  patients .filter((patient) => patient.level === 0).forEach((patient, index) => {
+  patients.filter((patient) => patient.level === 0).forEach((patient, index) => {
     const li = document.createElement("li");
     li.className =
       "list-group-item d-flex justify-content-between align-items-center";
