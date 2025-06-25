@@ -19,9 +19,27 @@ function displayPatienTriage() {
     li.className =
       "list-group-item d-flex justify-content-between align-items-center";
 
+      const levelDot = document.createElement("span");
+      levelDot.className = "ms-2 rounded-circle d-inline-block align-middle";
+      levelDot.style.width = "16px";
+      levelDot.style.height = "16px";
+
+      // Cor da bolinha usando classes Bootstrap
+      if (patient.level === 1) {
+        levelDot.classList.add("bg-success");
+      } else if (patient.level === 2) {
+        levelDot.classList.add("bg-warning");
+      } else if (patient.level === 3) {
+        levelDot.classList.add("bg-danger");
+      } else {
+        levelDot.classList.add("bg-secondary");
+      }
+
     // Texto do paciente
     const info = document.createElement("span");
-    info.textContent = `${patient.name} - Motivo: ${patient.reason} - Nível de triagem: ${patient.level}`;
+    info.textContent = `${patient.name} - Motivo: ${patient.reason} - Nível de triagem: `;
+    info.appendChild(levelDot);
+
 
     // Botões de triagem
     const buttonRed = document.createElement("button");
