@@ -29,7 +29,8 @@ function addPatient(event) {
   patients.push(patient);
   localStorage.setItem("patients", JSON.stringify(patients)); // Salva no localStorage
   displayPatients();
-
+  namePatiente.value = "";
+  nameReson.value = "";
   console.log(patients);
 }
 
