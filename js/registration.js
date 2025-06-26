@@ -1,5 +1,6 @@
 import { getTriagedPatients } from "./trige.js";
 import { levelDot } from "./levelDot.js";
+import { generatPDF } from "./PDF.js"; 
 
 function renderPatientsRegistration() {
     
@@ -37,28 +38,30 @@ function renderPatientsRegistration() {
     )
     .map((patient) => {
       const tr = document.createElement("tr");
+      tr.id = `patient-row-${patient.id}`;
 
-      // Nome
+   
       const tdName = document.createElement("td");
       tdName.textContent = patient.name;
       tr.appendChild(tdName);
 
-      // Nível (usa levelDot)
+  
       const tdLevel = document.createElement("td");
       tdLevel.appendChild(levelDot(patient));
       tr.appendChild(tdLevel);
 
-      // Motivo
+      
       const tdReason = document.createElement("td");
       tdReason.textContent = patient.reason;
       tr.appendChild(tdReason);
 
       const tdActions = document.createElement("td");
-
       const buttonPDF = document.createElement("button");
-
       buttonPDF.className = "btn btn-warning btn-sm";
       buttonPDF.textContent = "Gerar PDF";
+      buttonPDF.onclick = () => {
+        generatPDF(patient.id);
+      };
 
       tdActions.appendChild(buttonPDF);
       tr.appendChild(tdActions);
