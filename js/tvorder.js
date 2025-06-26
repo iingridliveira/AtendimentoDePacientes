@@ -1,5 +1,5 @@
 import { getTriagedPatients } from "./trige.js";
-import {levelDot} from "./levelDot.js";
+import { levelDot } from "./levelDot.js";
 
 function renderOrderedPatients() {
   const displayQueue = document.getElementById("display-queue");
@@ -16,17 +16,24 @@ function renderOrderedPatients() {
 
   const ul = document.createElement("ul");
   ul.className = "list-group";
+  const proximoPaciente = triagedPatients.find((p) => p.status === 0);
 
-  triagedPatients.forEach((patient) => {
-   
-    const li = document.createElement("li");
-    li.className = "list-group-item";
-    li.textContent = `${patient.name} - Motivo: ${patient.reason} estado ${patient.status}- Nível: `;
-    li.appendChild(levelDot(patient));
-    ul.appendChild(li);
 
-  
-  });
+  triagedPatients
+    .filter(
+      (patient) =>
+        patient.level === 1 || patient.level === 2 || patient.level === 3
+    )
+    .map((patient) => {
+      const li = document.createElement("li");
+      li.className = "list-group-item";
+      
+      const isProximo = proximoPaciente === patient;
+
+      li.textContent = `${patient.name}  - Estado: ${isProximo ? "(Próximo)" : "" || patient.status === 1?"em atendimento" : ""}`;
+      li.appendChild(levelDot(patient));
+      ul.appendChild(li);
+    });
 
   displayQueue.appendChild(ul);
 }

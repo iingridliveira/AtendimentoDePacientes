@@ -71,8 +71,15 @@ function getTriagedPatients() {
   // Busca sempre do localStorage para garantir que está atualizado
   const savedPatients = localStorage.getItem("patients");
   const patients = savedPatients ? JSON.parse(savedPatients) : [];
-  return [...patients].sort((a, b) => b.level - a.level);
+
+  const sortedPatients = [...patients].sort((a, b) => {
+    if (b.status !== a.status) return b.status - a.status; // status 1 primeiro
+    return b.level - a.level; // depois por level decrescente
+  });
+
+  return sortedPatients;
 }
+
 
 
 export { displayPatienTriage, getTriagedPatients}; 

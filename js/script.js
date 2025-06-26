@@ -1,6 +1,7 @@
 import { displayPatienTriage } from "./trige.js";
 import { renderOrderedPatients } from "./tvorder.js";
 import { renderPatientsMedical } from "./medicalArea.js";
+import { renderPatientsRegistration } from "./registration.js";
 
 const namePatiente = document.getElementById("patient-name");
 const nameReson = document.getElementById("patient-reason");
@@ -44,7 +45,12 @@ function displayPatients() {
   displayPatienTriage(); // Atualiza a lista de triagem
 }
 
-renderOrderedPatients
-document.getElementById("em-atendimento-tab")?.addEventListener("click", () => {
-  renderPatientsMedical();
+document.addEventListener("DOMContentLoaded", () => {
+  renderOrderedPatients();
+  renderPatientsRegistration();
+  document
+    .getElementById("em-atendimento-tab")
+    ?.addEventListener("click", () => {
+      renderPatientsMedical();
+    });
 });

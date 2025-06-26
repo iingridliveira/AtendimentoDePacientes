@@ -29,7 +29,10 @@ function renderPatientsMedical() {
 
   const tbody = table.querySelector("tbody");
 
-  triagedPatients.forEach((patient) => {
+  triagedPatients.filter(
+    (patient) =>
+      patient.level === 1 || patient.level === 2 || patient.level === 3
+  ).map((patient) => {
     const tr = document.createElement("tr");
 
     // Nome
@@ -47,8 +50,21 @@ function renderPatientsMedical() {
     tdReason.textContent = patient.reason;
     tr.appendChild(tdReason);
 
-        
     const tdActions = document.createElement("td");
+    const buttonAttend = document.createElement("button");
+    if (patient.status === 1) {
+      buttonAttend.className = "btn btn-warning btn-sm me-1";
+      buttonAttend.textContent = "em atendimento";
+      buttonAttend.disabled = true;
+    } else {
+      buttonAttend.className = "btn btn-success btn-sm";
+      buttonAttend.textContent = "Atender";
+      buttonAttend.onclick = () => {
+        patient.status = 1;
+        localStorage.setItem("patients", JSON.stringify(triagedPatients));
+        renderPatientsMedical();
+      };
+    }
     const buttonRemove = document.createElement("button");
     buttonRemove.className = "btn btn-danger btn-sm";
     buttonRemove.textContent = "Parar atendimento";
@@ -60,22 +76,9 @@ function renderPatientsMedical() {
         renderPatientsMedical();
       }
     };
-    tdActions.appendChild(buttonRemove);
-    const buttonAttend = document.createElement("button");
-    if (patient.status === 1) {
-      buttonAttend.className = "btn btn-warning btn-sm";
-      buttonAttend.textContent = "em atendimento";
-      buttonAttend.disabled = true;
-    } else {
-      buttonAttend.className = "btn btn-danger btn-sm";
-      buttonAttend.textContent = "Atender";
-      buttonAttend.onclick = () => {
-        patient.status = 1;
-        localStorage.setItem("patients", JSON.stringify(triagedPatients));
-        renderPatientsMedical();
-      };
-    }
     tdActions.appendChild(buttonAttend);
+    tdActions.appendChild(buttonRemove);
+
     tr.appendChild(tdActions);
 
     tbody.appendChild(tr);
