@@ -1,5 +1,5 @@
 # Atendimento De Pacientes
-##Um sistema de triagem hospitalar  
+## Um sistema de triagem hospitalar  
 -Atividade proposta por Escola Atlântico Avanti junto ao Capacita Brasil e professor 
 Eliakim Gama
 
