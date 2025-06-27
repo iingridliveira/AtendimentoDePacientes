@@ -1,6 +1,6 @@
 # Atendimento De Pacientes
 ## Um sistema de triagem hospitalar  
--Atividade proposta por Escola Atlântico Avanti junto ao Capacita Brasil e professor 
+-Atividade proposta por Capacita Brasil junto à Escola Atlântico Avanti  e professor 
 Eliakim Gama
 
 
