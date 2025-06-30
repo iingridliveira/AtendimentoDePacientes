@@ -1,6 +1,6 @@
 import { getTriagedPatients } from "./trige.js";
 import { levelDot } from "./levelDot.js";
-import { generatPDF } from "./PDF.js";
+import { generatPDF } from "./PDF.js"; // ✅ Certifique-se de importar corretamente
 
 function renderPatientsMedical() {
   const medicalArea = document.getElementById("medical-area");
@@ -36,25 +36,21 @@ function renderPatientsMedical() {
     .forEach((patient) => {
       const tr = document.createElement("tr");
 
-      // Nome
       const tdName = document.createElement("td");
       tdName.textContent = patient.name;
       tr.appendChild(tdName);
 
-      // Nível
       const tdLevel = document.createElement("td");
       tdLevel.appendChild(levelDot(patient));
       tr.appendChild(tdLevel);
 
-      // Motivo
       const tdReason = document.createElement("td");
       tdReason.textContent = patient.reason;
       tr.appendChild(tdReason);
 
-      // Ações
       const tdActions = document.createElement("td");
 
-      // Botão Atender
+      // Botão "Atender"
       const buttonAttend = document.createElement("button");
       if (patient.status === 1) {
         buttonAttend.className = "btn btn-warning btn-sm me-1";
@@ -75,11 +71,11 @@ function renderPatientsMedical() {
         };
       }
 
-      // Botão Finalizar Atendimento
-      const buttonRemove = document.createElement("button");
-      buttonRemove.className = "btn btn-danger btn-sm";
-      buttonRemove.textContent = "Finalizar atendimento";
-      buttonRemove.onclick = () => {
+      // Botão "Finalizar"
+      const buttonFinish = document.createElement("button");
+      buttonFinish.className = "btn btn-danger btn-sm me-1";
+      buttonFinish.textContent = "Finalizar atendimento";
+      buttonFinish.onclick = () => {
         const allPatients = JSON.parse(localStorage.getItem("patients")) || [];
         const attendedPatients = JSON.parse(localStorage.getItem("attendedPatients")) || [];
 
@@ -96,8 +92,18 @@ function renderPatientsMedical() {
         }
       };
 
+      // Botão "Gerar PDF"
+      const buttonPDF = document.createElement("button");
+      buttonPDF.className = "btn btn-warning btn-sm";
+      buttonPDF.textContent = "Gerar PDF";
+      buttonPDF.onclick = () => {
+        generatPDF(patient.id, "em-atendimento");
+      };
+
       tdActions.appendChild(buttonAttend);
-      tdActions.appendChild(buttonRemove);
+      tdActions.appendChild(buttonFinish);
+      tdActions.appendChild(buttonPDF);
+
       tr.appendChild(tdActions);
       tbody.appendChild(tr);
     });
@@ -136,7 +142,6 @@ function renderAttendedPatients() {
 
   attendedPatients.forEach((patient) => {
     const tr = document.createElement("tr");
-    tr.id = `patient-row-${patient.id}`; // Necessário para o PDF
 
     const tdName = document.createElement("td");
     tdName.textContent = patient.name;
@@ -148,13 +153,11 @@ function renderAttendedPatients() {
     tdReason.textContent = patient.reason;
 
     const tdActions = document.createElement("td");
-
-    // Botão de gerar PDF
     const buttonPDF = document.createElement("button");
     buttonPDF.className = "btn btn-warning btn-sm";
     buttonPDF.textContent = "Gerar PDF";
     buttonPDF.onclick = () => {
-      generatPDF(patient.id);
+      generatPDF(patient.id, "atendidos");
     };
 
     tdActions.appendChild(buttonPDF);
@@ -170,7 +173,6 @@ function renderAttendedPatients() {
   attendedArea.appendChild(table);
 }
 
-// Executa tudo no carregamento da página
 document.addEventListener("DOMContentLoaded", () => {
   renderPatientsMedical();
   renderAttendedPatients();

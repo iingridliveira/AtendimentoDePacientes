@@ -1,9 +1,14 @@
-function generatPDF(patientId) {
+function generatPDF(patientId, origem) {
   const allPatients = JSON.parse(localStorage.getItem("patients")) || [];
   const attendedPatients = JSON.parse(localStorage.getItem("attendedPatients")) || [];
 
-  // Procura o paciente nas duas listas
-  const patient = [...allPatients, ...attendedPatients].find(p => p.id === patientId);
+  let patient;
+
+  if (origem === "atendidos") {
+    patient = attendedPatients.find(p => p.id === patientId);
+  } else {
+    patient = allPatients.find(p => p.id === patientId);
+  }
 
   if (!patient) {
     alert("Paciente não encontrado!");
@@ -19,10 +24,10 @@ function generatPDF(patientId) {
   pdfContent.style.borderRadius = "10px";
 
   const levelColor = {
-    1: "#198754", // verde
-    2: "#ffc107", // amarelo
-    3: "#dc3545", // vermelho
-    default: "#6c757d" // cinza
+    1: "#198754",
+    2: "#ffc107",
+    3: "#dc3545",
+    default: "#6c757d"
   };
 
   const levelLabel = {
@@ -32,7 +37,7 @@ function generatPDF(patientId) {
     default: "Não triado"
   };
 
-  const atendimentoData = new Date().toLocaleDateString();
+  const atendimentoData = new Date().toLocaleDateString("pt-BR");
 
   pdfContent.innerHTML = `
     <h2 style="text-align:center; margin-bottom: 20px;">Prontuário de Atendimento</h2>
@@ -61,7 +66,7 @@ function generatPDF(patientId) {
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
     })
     .from(pdfContent)
-    .save();
+    .save(); 
 }
 
 
