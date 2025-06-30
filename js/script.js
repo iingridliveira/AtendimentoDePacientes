@@ -54,3 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
       renderPatientsMedical();
     });
 });
+
+document
+  .getElementById("atendidos-tab")
+  ?.addEventListener("click", () => {
+    renderAttendedPatients();
+  });
