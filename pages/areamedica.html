@@ -48,14 +48,21 @@
         <ul class="nav nav-tabs mb-3" id="medicalAreaTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="em-atendimento-tab" data-bs-toggle="tab"
-                    data-bs-target="#em-atendimento" type="button" role="tab" aria-controls="em-atendimento"
-                    aria-selected="true">EM ATENDIMENTO</button>
+                data-bs-target="#em-atendimento" type="button" role="tab" aria-controls="em-atendimento"
+                aria-selected="true">EM ATENDIMENTO</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="triagem-tab" data-bs-toggle="tab" data-bs-target="#triagem" type="button"
-                    role="tab" aria-controls="triagem" aria-selected="false">TRIAGEM</button>
+                <button class="nav-link" id="triagem-tab" data-bs-toggle="tab"
+                data-bs-target="#triagem" type="button" role="tab"
+                aria-controls="triagem" aria-selected="false">TRIAGEM</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="atendidos-tab" data-bs-toggle="tab"
+                data-bs-target="#atendidos" type="button" role="tab"
+                aria-controls="atendidos" aria-selected="false">ATENDIDOS</button>
             </li>
         </ul>
+
 
         <!-- Conteúdo das Abas -->
         <div class="tab-content" id="medicalAreaTabsContent">
@@ -87,7 +94,15 @@
         </div>
     </div>
 
+    <!-- Aba 'ATENDIDOS' -->
+    <div class="tab-pane fade tab-content-area" id="atendidos" role="tabpanel" aria-labelledby="atendidos-tab">
+        <h4 class="mb-3">Pacientes Atendidos</h4>
+  <div id="attended-area"></div>
+    </div>
+
+
     <!-- Bootstrap JS Bundle (Popper incluído) -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

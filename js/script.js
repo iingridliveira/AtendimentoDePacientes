@@ -23,15 +23,15 @@ function addPatient(event) {
   const reason = nameReson.value.trim();
 
   const patient = {
-    id: patients.length + 1,
+    id: crypto.randomUUID(),  // 🔥 Aqui está a correção
     name: name,
     reason: reason,
     level: 0,
-    status:0, // Nível de triagem padrão
+    status: 0,
   };
 
   patients.push(patient);
-  localStorage.setItem("patients", JSON.stringify(patients)); // Salva no localStorage
+  localStorage.setItem("patients", JSON.stringify(patients));
   displayPatients();
   namePatiente.value = "";
   nameReson.value = "";
@@ -54,3 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
       renderPatientsMedical();
     });
 });
+
+document
+  .getElementById("atendidos-tab")
+  ?.addEventListener("click", () => {
+    renderAttendedPatients();
+  });
