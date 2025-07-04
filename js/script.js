@@ -17,18 +17,7 @@ window.onload = function () {
   }
 };
 
-function addPatient(event) {
-  event.preventDefault();
-  const name = namePatiente.value.trim();
-  const reason = nameReson.value.trim();
-
-  const patient = {
-    id: crypto.randomUUID(),  // 🔥 Aqui está a correção
-    name: name,
-    reason: reason,
-    level: 0,
-    status: 0,
-  };
+f
 
   patients.push(patient);
   localStorage.setItem("patients", JSON.stringify(patients));
